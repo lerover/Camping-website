@@ -9,7 +9,7 @@ button,a,div {
   outline: none;
 }
 
-div:focus{
+div:focus, div:hover{
   -webkit-tap-highlight-color: transparent;
   outline: none;
 }
