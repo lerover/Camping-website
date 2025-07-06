@@ -9,11 +9,6 @@ button,a,div {
   outline: none;
 }
 
-div:focus, div:hover{
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
-}
-
 .spacing{
     margin: 20px 0px;
 }
@@ -260,6 +255,16 @@ nav .mobile-menu{
 .carousel-item:hover img{
   transform: scale(1.3); 
 }
+
+.carousel-item:focus{
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+/* div:focus, div:hover{
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+} */
 
 .carousel-btn {
   display: none;
