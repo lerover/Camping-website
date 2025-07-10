@@ -1,32 +1,41 @@
 // route registration 
 const routes = {
-    "/" : '/pages/home.html',
-    "/test" : '/pages/test.html'
+    "/" : '/pages/products.html',
+    "/home" : '/pages/home.html',
+
 }
 
 function render() {
     const path = window.location.pathname;
     const file = routes[path] || '/pages/404.html'
-
     fetch(file)
     .then(response => response.text())
-    .then(html => {
+    .then(async html => {
         const app = document.getElementById('app')
-        app.innerHTML = html
 
-        const scripts = app.querySelectorAll("script")
-        scripts.forEach(script => {
-            const newScript = document.createElement("script")
-            
-            if(script.src){
-                newScript.src = script.src 
-            }else{
-                newScript.textContent = script.textContent
+        //clear app inner html
+        app.innerHTML = '';
+
+        //temp container
+        const temp = document.createElement('div');
+        temp.innerHTML = html;
+
+        //move content (no script)
+        //temp.childNodes represents for elements got after fetching
+        [...temp.childNodes].forEach(node => {
+            if(node.tagName !== 'SCRIPT'){
+                app.appendChild(node.cloneNode(true));
             }
-            
-            app.appendChild(newScript)
-            script.remove()
         })
+
+        //Dynamically import js module based on path
+        const scriptPath = `/js${path || 'home'}.js`;
+        try{
+            const module = await import(scriptPath);
+            module.init?.();
+        }catch (err) {
+            console.warn(`No script module found for ${scriptPath}`);
+        }
     })
 }
 

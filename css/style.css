@@ -516,6 +516,53 @@ footer {
 
 /*======================== footer styles end here ==================*/
 
+/*======================== products styles start here ==================*/
+
+.products{
+    margin-top: 100px;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.products select {
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #333;
+  font-size: 1rem;
+
+}
+
+.search-bar{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  position: relative;
+}
+
+.search-bar input{
+  padding: 0.5rem 1rem;
+  padding-left: 2rem;
+  border-radius: 0.375rem;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #333;
+  font-size: 1rem;
+
+}
+
+.search-bar .search-icon{
+  position: absolute;
+  left: 0.5rem;
+}
+
+
+/*======================== products styles end here ==================*/
+
 /*======================== media queries start here ==================*/
 
 @media (min-width: 640px) {
@@ -593,7 +640,9 @@ footer {
         flex: 0 0 30%;
     }
 
-
+    .products{
+      padding: 0 40px;
+    }
  }
 
 @media (min-width: 1024px) { /* lg */ 
@@ -667,6 +716,10 @@ footer {
     }
 
     .feature-spacing{
+      padding: 0 500px;
+    }
+
+    .product-spacing{
       padding: 0 500px;
     }
     
