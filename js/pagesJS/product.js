@@ -2,6 +2,7 @@ import { state, watch } from "../store.js";
 
 export function init(){
     const productCardContainer = document.querySelector('.product-card-container');
+    state.cart = [...JSON.parse(localStorage.getItem('cart') || '[]')];
     const cardBtns = [];
 
     const productCardInfo = [
@@ -42,7 +43,7 @@ export function init(){
             img: './assets/images/backPack.png'
         }
     ]
-    
+
     productCardInfo.forEach((item,index) => {
         const card = document.createElement('div');
         card.classList.add('card');
