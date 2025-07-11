@@ -3,22 +3,31 @@ import { state, watch } from "./store.js"
 
 
 //================= nav bar script start here ================== 
-// const nav = document.getElementById('nav')
-// let currentScroll = 0
-// window.addEventListener('scroll', () => {
-//     if(window.scrollY > currentScroll){
-//         nav.style.opacity = '0'
-//         setTimeout(() => {
-//             nav.style.display = 'none'
-//         }, 100)
-//     }else{
-//         nav.style.display = 'flex'
-//         setTimeout(() => {
-//             nav.style.opacity = '1'
-//         }, 100)
-//     }
-//     currentScroll = window.scrollY
-// })
+const nav = document.getElementById('nav')
+let currentScroll = 0
+window.addEventListener('scroll', () => {
+    if(window.innerWidth < 768){
+        if(window.scrollY > currentScroll){
+            nav.style.opacity = '0'
+            setTimeout(() => {
+                nav.style.display = 'none'
+            }, 100)
+
+            mobileMenuList.style.opacity = '0'
+            burgerIcon.style.display = 'block'
+            xMarkIcon.style.display = 'none'
+            setTimeout(() => {
+                mobileMenuList.style.display = 'none'
+            }, 100)
+        }else{
+            nav.style.display = 'flex'
+            setTimeout(() => {
+                nav.style.opacity = '1'
+            }, 100)
+        }
+        currentScroll = window.scrollY
+    }
+})
 
 const cartLength = document.getElementById('cartLength')
 cartLength.innerText = state.cart.length
