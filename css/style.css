@@ -546,10 +546,12 @@ footer {
 
 .products{
     margin-top: 100px;
+    padding: 0 10px;
     
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    
+    gap: 20px;
 }
 
 .products select {
@@ -567,6 +569,8 @@ footer {
   gap: 10px;
   align-items: center;
 
+  width: 100%;
+
   position: relative;
 }
 
@@ -578,6 +582,7 @@ footer {
   background-color: white;
   color: #333;
   font-size: 1rem;
+  width: 100%;
 
 }
 
@@ -588,7 +593,7 @@ footer {
 
 .product-title{
   text-align: center;
-  margin: 80px;
+  margin: 20px;
 }
 
 .product-card-container{
@@ -717,6 +722,16 @@ footer {
 
     .products{
       padding: 0 40px;
+    }
+
+    .products{
+      flex-direction: row;
+      justify-content: space-between;
+  }
+
+
+    .search-bar{
+      width: auto;
     }
  }
 
