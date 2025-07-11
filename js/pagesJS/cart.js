@@ -34,6 +34,11 @@ export function init() {
       }); 
     });
 
+    if(items.length <= 0){
+      cartContainer.classList.add('cart-empty');
+      cartContainer.innerHTML = '<p class="cart-empty-text">Cart is empty</p>';
+    }
+
   }
 
   // 1. Render immediately when init

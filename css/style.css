@@ -615,7 +615,18 @@ footer {
   margin-bottom: 40px;
 }
 
+.cart-empty{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  height: 70vh;
+}
+
+.cart-empty-text{
+  font-size: 24px;
+  
+}
 /*======================== media queries start here ==================*/
 
 @media (min-width: 640px) {
