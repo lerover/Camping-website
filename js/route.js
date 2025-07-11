@@ -1,13 +1,15 @@
 // route registration 
 const routes = {
-    "/" : '/pages/products.html',
-    "/home" : '/pages/home.html',
+    "" : '/pages/home.html',
+    "product" : '/pages/products.html',
+    'cart' : '/pages/cart.html'
 
 }
 
 function render() {
-    const path = window.location.pathname;
-    const file = routes[path] || '/pages/404.html'
+    const hash = window.location.hash.slice(1); // remove #
+   
+    const file = routes[hash] || '/pages/404.html'
     fetch(file)
     .then(response => response.text())
     .then(async html => {
@@ -29,9 +31,10 @@ function render() {
         })
 
         //Dynamically import js module based on path
-        const scriptPath = `/js${path || 'home'}.js`;
+        const scriptPath = `/js/pagesJS/${hash || 'home'}.js`;
         try{
             const module = await import(scriptPath);
+            console.log(scriptPath)
             module.init?.();
         }catch (err) {
             console.warn(`No script module found for ${scriptPath}`);
@@ -39,18 +42,19 @@ function render() {
     })
 }
 
-function navigate(url) {
-    history.pushState(null, null, url)
+function navigate(hash) {
+    location.hash = hash
     render()
 }
 
 document.addEventListener('click', (e) => {
     if(e.target.matches("[data-link]")){
         e.preventDefault()
-        navigate(e.target.href)
+        const hash = new URL(e.target.href).hash
+        navigate(hash)
     }
 })
 
-window.addEventListener('popstate', render);
+window.addEventListener('hashchange', render);
 
 render();

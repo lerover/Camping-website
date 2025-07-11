@@ -1,3 +1,7 @@
+import { state, watch } from "./store.js"
+
+
+
 //================= nav bar script start here ================== 
 // const nav = document.getElementById('nav')
 // let currentScroll = 0
@@ -16,6 +20,20 @@
 //     currentScroll = window.scrollY
 // })
 
+const cartLength = document.getElementById('cartLength')
+cartLength.innerText = state.cart.length
+if(state.cart.length <= 0){
+    cartLength.style.display = 'none'
+}
+watch('cart', () => {
+    if(state.cart.length > 0){
+        cartLength.style.display = 'block'
+    }else{
+        cartLength.style.display = 'none'
+    }
+    
+    cartLength.innerText = state.cart.length
+})
 
 //================= mobile menu script start here ================== 
 const mobileMenuBtn = document.getElementById('mobile-menu-btn')

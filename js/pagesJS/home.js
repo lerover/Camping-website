@@ -58,48 +58,8 @@ interval = setInterval(() => {
 })
 
 //================= features script start here ================== 
-const cards = document.querySelectorAll('.card')
-cards.forEach((card, index) => {
-card.classList.add(`card-img-${index + 1}`)
-})
 
 const cardInfo = [
-{
-    title:'Tent',
-    description:'Don\'t let the weather get you down',
-    price: ' 25000',
-    img: './assets/images/tent.png'
-},
-{
-    title:'generator',
-    description: 'Take your power with you',
-    price: ' 25000',
-    img: './assets/images/generator.png'
-},
-{
-    title:'Camp Flash',
-    description: 'Light up the night',
-    price: ' 25000',
-    img: './assets/images/flash.png'
-},
-{
-    title:'Camp Ice Box',
-    description: 'Keep your food fresh',
-    price: ' 25000',
-    img: './assets/images/iceBox.png'
-},
-{
-    title: 'Camping Set',
-    description: 'A complete camping set',
-    price: ' 150000',
-    img: './assets/images/campingSet.png'
-},
-{
-    title: 'Backpack',
-    description: 'A comfortable backpack',
-    price: ' 90000',
-    img: './assets/images/backPack.png'
-},
 {
     title:'Tent',
     description:'Don\'t let the weather get you down',

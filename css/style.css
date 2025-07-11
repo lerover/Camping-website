@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+#app{
+  min-height: 100vh;
+}
+
 button,a,div {
   -webkit-tap-highlight-color: transparent;
   outline: none;
@@ -43,9 +47,7 @@ nav ul{
 }
 
 /* a tag styles in nav  */
-nav ul li{
-    overflow: hidden;
-}
+
 nav ul a{
     text-decoration: none;
     color: #000;
@@ -68,6 +70,26 @@ nav button{
     padding: 5px 10px;
     border-radius: 200px;
     transition: all 0.3s ease;
+}
+
+nav .cart{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+nav .cart .cart-badge{
+  position: absolute;
+  top: 0px;
+  right: -8px;
+
+  background-color: red;
+  color: white;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-size: 12px;
 }
 
 .login-btn{
@@ -311,7 +333,7 @@ nav .mobile-menu{
     gap: 20px;
 }
 
-.features .card {
+.card {
     background: white;
     border-radius: 16px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.1);
@@ -334,7 +356,7 @@ nav .mobile-menu{
     align-items: center;
   }
 
-  .features .card-layer{
+.card-layer{
     position: absolute;
     top: 0;
     left: 0;
@@ -347,16 +369,16 @@ nav .mobile-menu{
     cursor: pointer;
   }
 
-  .features .card:hover .card-layer{
+.card:hover .card-layer{
     background-color: rgba(0,0,0,0.4);
   }
 
-  .features .card .card-content{
+.card .card-content{
     position: relative;
     z-index: 100;
   }
 
- .features .card h2 {
+.card h2 {
     margin-top: 40px;
     margin-bottom: 12px;
     font-size: 24px;
@@ -364,14 +386,14 @@ nav .mobile-menu{
     z-index: 1;
   }
 
- .features .card p {
+.card p {
     font-size: 14px;
     color: #fff;
     margin-bottom: 24px;
     padding: 0 20px;
   }
 
- .features .card button {
+.card .card-btn {
     background: linear-gradient(90deg, #1ac6d8, #128f99);
     border: none;
     border-radius: 30px;
@@ -387,7 +409,11 @@ nav .mobile-menu{
     font-weight: 800;
   }
 
- .features .card button:hover {
+  .card .card-btn-remove{
+    background-color: red;
+  }
+
+.card button:hover {
     transform: scale(1.05);
   }
 
@@ -560,8 +586,35 @@ footer {
   left: 0.5rem;
 }
 
+.product-title{
+  text-align: center;
+  margin: 80px;
+}
+
+.product-card-container{
+    display: grid;
+    justify-content: center;
+    gap: 20px;
+
+    margin-bottom: 40px;
+}
 
 /*======================== products styles end here ==================*/
+
+/*======================== cart styles start here ==================*/
+
+.carts{
+  margin-top: 100px;
+}
+
+.carts{
+  display: grid;
+  justify-content: center;
+  gap: 20px;
+
+  margin-bottom: 40px;
+}
+
 
 /*======================== media queries start here ==================*/
 
@@ -573,6 +626,10 @@ footer {
 
      .features .card-container{
         grid-template-columns: repeat(2,1fr);
+    }
+
+    .product-card-container,.carts{
+      grid-template-columns: repeat(2,1fr);
     }
 
     .hero{
@@ -607,6 +664,9 @@ footer {
         flex: 0 0 50%;
     }
 
+    .product-title{
+      margin: 40px;
+    }
 
 }
 
@@ -632,6 +692,10 @@ footer {
     .features .card-container{
         grid-template-columns: repeat(3,1fr);
     }
+
+    .product-card-container,.carts{
+      grid-template-columns: repeat(3,1fr);
+    }
     .footer-content{
         flex-direction: row;
     }
@@ -640,7 +704,7 @@ footer {
         flex: 0 0 30%;
     }
 
-    .products{
+    .products,.carts{
       padding: 0 40px;
     }
  }
@@ -648,6 +712,10 @@ footer {
 @media (min-width: 1024px) { /* lg */ 
     .features .card-container{
         grid-template-columns: repeat(4,1fr);
+    }
+
+    .product-card-container,.carts{
+      grid-template-columns: repeat(4,1fr);
     }
 
 
@@ -694,6 +762,10 @@ footer {
         grid-template-columns: repeat(6,1fr);
     }
 
+    .product-card-container,.carts{
+      grid-template-columns: repeat(6,1fr);
+    }
+
 }
 
 @media (min-width: 2336px) { 
@@ -710,7 +782,6 @@ footer {
         grid-template-columns: repeat(6,1fr);
     }
 
-
     .spacing{
         margin: 100px 500px;
     }
@@ -719,7 +790,7 @@ footer {
       padding: 0 500px;
     }
 
-    .product-spacing{
+    .product-spacing,.cart-spacing{
       padding: 0 500px;
     }
     
