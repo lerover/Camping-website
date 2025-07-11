@@ -2,7 +2,8 @@ import { state, watch } from "../store.js";
 
 export function init(){
     const productCardContainer = document.querySelector('.product-card-container');
-    state.cart = [...JSON.parse(localStorage.getItem('cart') || '[]')];
+    // state.cart = [...JSON.parse(localStorage.getItem('cart') || '[]')];
+    console.log(state.cart)
     const cardBtns = [];
 
     const productCardInfo = [
@@ -82,7 +83,7 @@ export function init(){
             })
         })
 
-        watch('cart', () => {
+        function cardBtnFunction() {
             cardBtns.forEach((cardBtn) => {
                 if(state.cart.some((item)=> item.title == cardBtn.information.title && item.price == cardBtn.information.price)){
                     state.cart.forEach((item) => {
@@ -94,13 +95,18 @@ export function init(){
                     })
                 }else{
                     const btn = document.getElementById(`btn-${cardBtn.information.title}-${cardBtn.information.price}`);
-                    btn.innerText = 'Buy Now';
-                    btn.removeAttribute('style');
-                    btn.classList.add('btn-type');
+                    if(btn){
+                        btn.innerText = 'Buy Now';
+                        btn.removeAttribute('style');
+                        btn.classList.add('btn-type');
+                    }
                 }
             })
+        }
 
-            console.log(state.cart)
+        cardBtnFunction()
+        watch('cart', ()=>{
+            cardBtnFunction();
         })
 
 }

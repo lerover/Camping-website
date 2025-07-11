@@ -4,13 +4,12 @@ export function init() {
   const cartContainer = document.getElementById('cart-container');
 
   // Load cart from localStorage
-  state.cart = [...JSON.parse(localStorage.getItem('cart') || '[]')];
-  console.log(state.cart)
+  let items = JSON.parse(localStorage.getItem('cart')) || [];
 
   // Render cart items
   function renderCartItems() {
     cartContainer.innerHTML = ''; // clear previous
-    state.cart.forEach(item => {
+    items.forEach(item => {
       const card = document.createElement('div');
       card.classList.add('card');
       card.style.backgroundImage = `url(${item.img})`;
@@ -20,17 +19,31 @@ export function init() {
             <h2>${item.title}</h2>
             <p>${item.description}</p>
             <p>${item.price}</p>
-            <button class="card-btn btn-type" id="btn-${item.title}-${item.price}">Buy Now</button>
+            <button class="card-btn" style="background:white; color:red" id="btn-${item.title}-${item.price}">Remove From Cart</button>
         </div>
         <div class="card-layer"></div>
       `;
       cartContainer.appendChild(card);
+
+
+      const btn = card.querySelector('button');
+      btn.addEventListener('click', () => {
+        items = items.filter(i => i.title !== item.title || i.price !== item.price);
+        localStorage.setItem('cart', JSON.stringify(items));
+        state.cart = [...items]; // trigger reactivity
+      }); 
     });
+
   }
 
   // 1. Render immediately when init
   renderCartItems();
 
   // 2. Watch for future changes
-  watch('cart', renderCartItems);
+  watch('cart', () => {
+    renderCartItems();
+    items = state.cart
+  });
+
+
 }
