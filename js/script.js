@@ -7,22 +7,13 @@ const nav = document.getElementById('nav')
 let currentScroll = 0
 window.addEventListener('scroll', () => {
     if(window.innerWidth < 768){
-        if(window.scrollY > currentScroll){
-            nav.style.opacity = '0'
-            setTimeout(() => {
-                nav.style.display = 'none'
-            }, 100)
+        if(window.scrollY != currentScroll){
 
             mobileMenuList.style.opacity = '0'
             burgerIcon.style.display = 'block'
             xMarkIcon.style.display = 'none'
             setTimeout(() => {
                 mobileMenuList.style.display = 'none'
-            }, 100)
-        }else{
-            nav.style.display = 'flex'
-            setTimeout(() => {
-                nav.style.opacity = '1'
             }, 100)
         }
         currentScroll = window.scrollY
