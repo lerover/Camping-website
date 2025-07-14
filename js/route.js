@@ -2,13 +2,14 @@
 const routes = {
     "" : '/pages/home.html',
     "product" : '/pages/products.html',
-    'cart' : '/pages/cart.html'
+    'cart' : '/pages/cart.html',
+    'about' : '/pages/about.html'
 
 }
 
 function render() {
     const hash = window.location.hash.slice(1); // remove #
-   
+    console.log(hash)
     const file = routes[hash] || '/pages/404.html'
     fetch(file)
     .then(response => response.text())
@@ -51,6 +52,7 @@ document.addEventListener('click', (e) => {
     if(e.target.matches("[data-link]")){
         e.preventDefault()
         const hash = new URL(e.target.href).hash
+        console.log(hash)
         navigate(hash)
     }
 })

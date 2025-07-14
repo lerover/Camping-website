@@ -1,6 +1,7 @@
 import { state, watch } from "../store.js";
 
 export function init(){
+    state.routePath = 'products';
     const productCardContainer = document.querySelector('.product-card-container');
     // state.cart = [...JSON.parse(localStorage.getItem('cart') || '[]')];
     console.log(state.cart)

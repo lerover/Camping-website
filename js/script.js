@@ -20,6 +20,28 @@ window.addEventListener('scroll', () => {
     }
 })
 
+console.log(window.location.pathname)
+// watch('routePath', () => {
+//     console.log(state.routePath)
+// })
+nav.childNodes.forEach(node => {
+    if(node.tagName === 'UL'){
+        node.childNodes.forEach(child => {
+            if(child.tagName === 'LI'){
+                watch('routePath', () => {
+                    console.log(state.routePath)
+                    if(child.children[0].innerText.toLowerCase() === state.routePath){
+                        child.children[0].style.color = '#1ac6d8'
+                    }else{
+                        child.children[0].style.color = ''
+                    }
+                })
+                console.log(child.children[0].innerText.toLowerCase())
+            }
+        })
+    }
+});
+
 const cartLength = document.getElementById('cartLength')
 cartLength.innerText = state.cart.length
 if(state.cart.length <= 0){

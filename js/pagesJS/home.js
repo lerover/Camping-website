@@ -1,5 +1,8 @@
+import { state, watch } from "../store.js";
+
 export function init(){
 
+state.routePath = 'home';
     //================= hero carousel script start here ================== 
 const carousel = document.getElementById('carousel')
 const track = document.querySelector('.carousel-track');

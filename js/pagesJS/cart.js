@@ -1,6 +1,7 @@
 import { state, watch } from "../store.js";
 
 export function init() {
+  state.routePath = 'cart';
   const cartContainer = document.getElementById('cart-container');
 
   // Load cart from localStorage
@@ -19,6 +20,7 @@ export function init() {
             <h2>${item.title}</h2>
             <p>${item.description}</p>
             <p>${item.price}</p>
+            
             <button class="card-btn" style="background:white; color:red" id="btn-${item.title}-${item.price}">Remove From Cart</button>
         </div>
         <div class="card-layer"></div>
