@@ -11,24 +11,31 @@ export function init(){
         {
             name: 'Sarah Cook',
             position: 'CEO, ABC Company',
+            img: '../assets/images/CEO.png',
         },
         {
             name: 'Allen Hein',
             position: 'CTO, ABC Company',
+            img: '../assets/images/CTO.png',
         },
         {
             name: 'Jonathan',
             position: 'Manager, ABC Company',
+            img: '../assets/images/Manager.png',
         },
     ]
 
+    let currentIndex = 0;
+    let pastIndex;
+    let reviewCards = [];
+
     reviewData.forEach((item, index) => {
         const reviewCard = document.createElement('div');
-        reviewCard.style.display = 'none'
         reviewCard.classList.add('review-card');
+        reviewCard.style.display = 'none';
         reviewCard.innerHTML = `
                  <div class="review-card-img">
-                    <img src="../assets/images/CEO.png" alt="">
+                    <img src="${item.img}" alt="">
                 </div>
 
                 <div class="review-card-content">
@@ -60,6 +67,54 @@ export function init(){
         `
 
         carousel.appendChild(reviewCard);
+    })
+
+    carousel.childNodes.forEach(node => {
+        if(node.tagName === 'DIV'){
+            reviewCards.push(node)
+        }
+    })
+
+    reviewCards[currentIndex].style.display = 'flex';
+
+    console.log(carousel.childNodes);
+    function updateCarousel(type = 'next'){
+        pastIndex = currentIndex;
+
+        if(type === 'prev'){
+            if (currentIndex <= 0) {
+                currentIndex = reviewCards.length - 1;
+            } else {
+                currentIndex--;
+            }
+        }
+        else{
+            if (currentIndex >= reviewCards.length - 1) {
+                currentIndex = 0;
+            } else {
+                currentIndex++;
+            }
+        }
+
+        reviewCards[pastIndex].style.opacity = 0;
+
+        setTimeout(() => {
+            reviewCards[pastIndex].style.display = 'none';
+            reviewCards[currentIndex].style.display = 'flex';
+            reviewCards[currentIndex].style.opacity = 0;
+        }, 100)
+
+        setTimeout(() => {
+            reviewCards[currentIndex].style.opacity = 1;
+        },200)
+    }
+
+    nextBtn.addEventListener('click', () => {
+        updateCarousel()
+    })
+
+    prevBtn.addEventListener('click', () => {
+        updateCarousel('prev')
     })
 
 }
