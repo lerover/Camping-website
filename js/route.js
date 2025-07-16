@@ -3,7 +3,11 @@ const routes = {
     "" : '/pages/home.html',
     "product" : '/pages/products.html',
     'cart' : '/pages/cart.html',
-    'about' : '/pages/about.html'
+    'about' : '/pages/about.html',
+    'contact' : '/pages/contact.html',
+    'login' : '/pages/signIn.html',
+    'register' : '/pages/register.html',
+    'privacy' : '/pages/privacyPolicy.html',
 
 }
 
