@@ -1,14 +1,17 @@
+const base = window.location.pathname.replace(/\/$/, ''); // remove trailing slash if any
+
+
 // route registration 
 const routes = {
-    "" : '/pages/home.html',
-    "product" : '/pages/products.html',
-    'cart' : '/pages/cart.html',
-    'about' : '/pages/about.html',
-    'contact' : '/pages/contact.html',
-    'login' : '/pages/signIn.html',
-    'register' : '/pages/register.html',
-    'privacy' : '/pages/privacyPolicy.html',
-
+    "": `${base}/pages/home.html`,
+    "product": `${base}/pages/products.html`,
+    "cart": `${base}/pages/cart.html`,
+    "about": `${base}/pages/about.html`,
+    "contact": `${base}/pages/contact.html`,
+    "login": `${base}/pages/signIn.html`,
+    "register": `${base}/pages/register.html`,
+    "privacy": `${base}/pages/privacyPolicy.html`,
+    "404": `${base}/pages/404.html`, // optional fallback if needed
 }
 
 function render() {
@@ -38,7 +41,7 @@ function render() {
         })
 
         //Dynamically import js module based on path
-        const scriptPath = `/js/pagesJS/${hash || 'home'}.js`;
+        const scriptPath = `${base}/js/pagesJS/${hash || 'home'}.js`;
         try{
             const module = await import(scriptPath);
             console.log(scriptPath)
@@ -47,6 +50,11 @@ function render() {
             console.log(err)
             console.warn(`No script module found for ${scriptPath}`);
         }
+    })
+    .catch(err => {
+        console.log(err)
+        console.warn(`No script module found for ${scriptPath}`);
+        location.hash = '404'
     })
 }
 
