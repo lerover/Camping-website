@@ -1,5 +1,5 @@
 const base = window.location.pathname.replace(/\/$/, ''); // remove trailing slash if any
-
+console.log(base)
 
 // route registration 
 const routes = {
