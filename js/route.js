@@ -15,6 +15,7 @@ function render() {
     const hash = window.location.hash.slice(1); // remove #
     console.log(hash)
     const file = routes[hash] || '/pages/404.html'
+    console.log(file)
     fetch(file)
     .then(response => response.text())
     .then(async html => {
@@ -43,6 +44,7 @@ function render() {
             console.log(scriptPath)
             module.init?.();
         }catch (err) {
+            console.log(err)
             console.warn(`No script module found for ${scriptPath}`);
         }
     })
