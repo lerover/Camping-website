@@ -22,7 +22,6 @@ function render() {
     fetch(file)
     .then(response => response.text())
     .then(async html => {
-        console.log(html)
         const app = document.getElementById('app')
 
         //clear app inner html
@@ -44,7 +43,6 @@ function render() {
         const scriptPath = `${base}/js/pagesJS/${hash || 'home'}.js`;
         try{
             const module = await import(scriptPath);
-            console.log(scriptPath)
             module.init?.();
         }catch (err) {
             console.log(err)

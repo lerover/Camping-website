@@ -62,7 +62,9 @@ export function init(){
         if(data.length > 0){
             productCardContainer.style = 'none'
         }
-        data.forEach((item,index) => {
+        data.map(item => {
+         return {...item, count: 1}
+        }).forEach((item,index) => {
 
             const card = document.createElement('div');
             card.classList.add('card');
@@ -123,9 +125,11 @@ export function init(){
             cardBtn.btn.addEventListener('click', () => {
                 if(!state.cart.some((item)=> item.title == cardBtn.information.title && item.price == cardBtn.information.price)){
                     state.cart = [...state.cart, cardBtn.information]
+                    state.cartCount = [...state.cartCount, {title: cardBtn.information.title, count: 1}]
                     localStorage.setItem('cart', JSON.stringify(state.cart))
                 }else{
                     state.cart = state.cart.filter((item) => item.title != cardBtn.information.title)
+                    state.cartCount = state.cartCount.filter((item) => item.title != cardBtn.information.title)
                     localStorage.setItem('cart', JSON.stringify(state.cart))
                 }
             })
