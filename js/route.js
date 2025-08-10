@@ -1,5 +1,5 @@
 const base = window.location.pathname.replace(/\/$/, ''); // remove trailing slash if any
-console.log(base)
+
 
 // route registration 
 const routes = {
@@ -12,6 +12,7 @@ const routes = {
     "register": `${base}/pages/register.html`,
     "privacy": `${base}/pages/privacyPolicy.html`,
     "404": `${base}/pages/404.html`, // optional fallback if needed
+    "success": `${base}/pages/success.html`,
 }
 
 function render() {
@@ -41,6 +42,8 @@ function render() {
 
         //Dynamically import js module based on path
         const scriptPath = `${base}/js/pagesJS/${hash || 'home'}.js`;
+        // const scriptPath = `/js/pagesJS/${hash || 'home'}.js`;
+        
         try{
             const module = await import(scriptPath);
             module.init?.();

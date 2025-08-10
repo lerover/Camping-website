@@ -1344,4 +1344,95 @@ footer {
       padding: 0 100px;
     }
 
-}    
+} 
+
+.success-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  text-align: center;
+  max-width: 400px;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Check Icon Animation */
+.checkmark {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-shadow: 0 0 0 4px #d1fae5;
+  background: #10b981;
+  margin-bottom: 1rem;
+  animation: pop 0.4s ease forwards;
+}
+.checkmark:after {
+  content: '';
+  position: absolute;
+  left: 22px;
+  top: 30px;
+  width: 12px;
+  height: 25px;
+  border-right: 4px solid white;
+  border-bottom: 4px solid white;
+  transform: rotate(45deg);
+  animation: draw 0.4s ease 0.4s forwards;
+  opacity: 0;
+}
+
+/* Text Styles */
+h1 {
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+p {
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+}
+.order-id {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  margin-bottom: 1.5rem;
+}
+
+/* Button Styles */
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.btn-primary {
+  background: #10b981;
+  color: white;
+}
+.btn-primary:hover {
+  background: #059669;
+}
+.btn-secondary {
+  background: #e5e7eb;
+  color: #111827;
+  margin-left: 0.5rem;
+}
+.btn-secondary:hover {
+  background: #d1d5db;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+@keyframes pop {
+  0% {transform: scale(0);}
+  80% {transform: scale(1.1);}
+  100% {transform: scale(1);}
+}
+@keyframes draw {
+  to {opacity: 1;}
+}

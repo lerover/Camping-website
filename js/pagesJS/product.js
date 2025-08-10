@@ -48,6 +48,34 @@ export function init(){
             price: ' 90000',
             img: './assets/images/backPack.png',
             category: 'backPack'
+        },
+        {
+            title: 'Water Bottle',
+            description: 'Stay hydrated',
+            price: ' 25000',
+            img: './assets/images/carouselF1.png',
+            category: 'waterBottle'
+        },
+        {
+            title: 'Camping Tent',
+            description: 'A comfortable tent',
+            price: ' 350000',
+            img: './assets/images/tentl.png',
+            category: 'tent'
+        },
+        {
+            title: 'Backpack XL',
+            description: 'A comfortable backpack',
+            price: ' 90000',
+            img: './assets/images/backpackxl.png',
+            category: 'backPack'
+        },
+        {
+            title: 'Backpack',
+            description: 'A comfortable backpack',
+            price: ' 90000',
+            img: './assets/images/backpacksm.png',
+            category: 'backPack'
         }
     ]
 
