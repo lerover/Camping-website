@@ -20,7 +20,7 @@ You can check if Node.js is installed by running:
 ```bash
 node -v
 ```
-## 2. Install http-server
+### 2. Install http-server
 Once Node.js is installed, run the following command in your terminal to install http-server globally (you only need to do this once):
 
 ```bash
