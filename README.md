@@ -49,6 +49,7 @@ http://127.0.0.1:8080
 
 Copy the upper URL and paste it into your browser to open the project.
 
+---
 
 ## Troubleshooting
 
